@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <meta name="viewport" content="user-scalable=no, width=device-width" /> 
+
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
 <!-- Le fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="icon.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon.png">
@@ -10,8 +15,10 @@
 	body {
 		background:#003C06;
 	}
+	.container { width:530px;margin:0 auto;position:relative;}
 	.screen {
-		margin:0 auto;
+		position:absolute;
+		top:0;
 		background:url("background.png");
 		height:836px;
 		width:529px;
@@ -20,11 +27,9 @@
 	}
 	.pattern {
 		position:absolute;
-		top:582px;
-		left:50%;
-		margin:0 0 0 -263px;
 		width:526px;
 		height:173px;
+		top:582px;
 		z-index:0;
 		background:url("pattern.png");
         -webkit-animation: movePattern 7s infinite linear;
@@ -44,9 +49,11 @@
 	}
 </style>
 <body>
-	<div class="pattern"></div>
-	<div class="screen">
-		<div class="counter" id="counter">09:59</div>
+	<div class="container">
+		<div class="screen">
+			<div class="counter" id="counter">09:59</div>
+		</div>
+		<div class="pattern"></div>
 	</div>
 	<script type="text/javascript">
 		var minutes_to_go = 9, seconds_to_go = 59;
