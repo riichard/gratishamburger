@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta name="viewport" content="user-scalable=no, width=device-width" /> 
+<!-- Le fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon.png">
+<link rel="apple-touch-icon-precomposed" href="icon.png">
+<link rel="shortcut icon" href="icon.png">
+<style type="text/css">
+	body {
+		background:#003C06;
+	}
+	.screen {
+		margin:0 auto;
+		background:url("background.png");
+		height:836px;
+		width:529px;
+		position:relative;
+		z-index:10;
+	}
+	.pattern {
+		position:absolute;
+		top:582px;
+		left:50%;
+		margin:0 0 0 -263px;
+		width:526px;
+		height:173px;
+		z-index:0;
+		background:url("pattern.png");
+        -webkit-animation: movePattern 7s infinite linear;
+	}
+    @-webkit-keyframes movePattern {
+        0% { background-position:110% 0px; }
+        100% { background-position:0% 0px; }
+    }
+	.counter {
+		font-size:17px;
+		color:#fff;
+		text-align:center;
+		font-family:Monaco, courier;
+		font-weight:bold;
+		margin:750px 0 0 238px;
+		position:absolute;
+	}
+</style>
+<body>
+	<div class="pattern"></div>
+	<div class="screen">
+		<div class="counter" id="counter">09:59</div>
+	</div>
+	<script type="text/javascript">
+		var minutes_to_go = 9, seconds_to_go = 59;
+			tick = function(){
+				seconds_to_go -= 1
+				if(seconds_to_go == -1){
+					seconds_to_go = 59
+					minutes_to_go -= 1
+				}
+				var vmtg = minutes_to_go, vstg = seconds_to_go
+				if(vmtg < 10) vmtg = "0"+vmtg
+				if(vstg < 10) vstg = "0"+vstg
+				var text = [vmtg,vstg].join(':')
+				document.getElementById("counter").innerHTML = text
+				setTimeout(tick, 1000)
+			}
+			tick()
+	</script>
+</body>
